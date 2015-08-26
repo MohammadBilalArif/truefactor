@@ -12,11 +12,11 @@ In digital world we log in hundreds and thousands remote applications (websites)
 
 By the way passwords like MasterPassgoogle.com MasterPasstwitter.com are better but still count as a reuse - a sophisticated attacker will easily recover this pattern from the plain text dump.
 
-I just counted passwords I currently use. Four 8 letters long, four about 18 and two about 30 letters, 10 passwords in total. But there are hundreds of apps. I bet most people can't remember that many complex and unique passwords. But every single website wants you to do it, and never mentions that "password managers" even exist (hence < 1% market penetration rate).
+I just counted passwords I currently use. Four 8 letters long, four about 18 and two about 30 letters, *10 passwords in total*. But there are hundreds of apps. I bet most people can't remember that many complex and unique passwords. But every single website wants you to do it, and never mentions that "password managers" even exist (hence < 1% market penetration rate).
 
 Which means 99% of people reuse passwords. They have no other choice. They are vulnerable by design, and one day a leaked password will compromise their other accounts. The system makes no single attempt to help them. Yet another website does not care if you reuse your passwords, they think it is your problem and responsability.
 
-"Just use a password manager". It's like letting people drive not explaining them what traffic lights are. When they get pwned: "Should have read about traffic lights somewhere. Your problem.". 
+*"Just use a password manager"*. It's like letting people drive not explaining them what traffic lights are. When they get pwned: "Should have read about traffic lights somewhere. Your problem.". 
 
 Anyway, a password manager is an ugly "monkey patch" - it injects Javascript code into every website that finds `<input type=password>` and autofills it.
 
@@ -24,7 +24,7 @@ Anyway, a password manager is an ugly "monkey patch" - it injects Javascript cod
 
 <img src="/truefactor.png">
 
-Now, when it is crystal clear this design is so badly flawed, and must die as soon as possible, let's try to find a solution.
+Now, when it is **crystal clear this design is so badly flawed and must die as soon as possible**, let's try to find a solution.
 
 It should not involve any kind of special hardware: 
 
