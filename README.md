@@ -52,7 +52,12 @@ In Truefactor, there's no central authority, no one can log in your account or p
 
 Imagine this: I lost all my devices so I buy a new laptop and a smartphone. When I open my laptop it is empty. How do I get my passwords, private keys, Bitcoin wallets and everything else back?
 
-With Truefactor, all you need is email and password. "MyPassword:MyIdentifier" is used to derive your master private and public keys (MyPriv/MyPub). Truefactor application sends requests (signed with MyPriv) to distributed Truefactor servers `https://truefactor.io/getvault?public_key=MyPub&signature=SIG`. They respond with encrypted bundle that can be decrypted with MyPriv.
+With Truefactor, all you need is your email (Identifier string, easy to remember) and your master password for this bundle. It is ok to have many bundles, but I'd stick to 1 bundle per device.
+
+<img src="/signin.png">
+
+
+"MyPassword:MyIdentifier" is used to derive your master private and public keys (MyPriv/MyPub). Truefactor application sends requests (signed with MyPriv) to distributed Truefactor servers `https://truefactor.io/getvault?public_key=MyPub&signature=SIG`. They respond with encrypted bundle that can be decrypted with MyPriv.
 
 Only the person who knows both MyPassword and MyIdentity can derive the master key to download and decrypt the bundle. 
 
