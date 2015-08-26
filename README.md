@@ -20,6 +20,8 @@ Anyway, a password manager is an ugly "monkey patch" - it injects Javascript cod
 
 ## The Solution
 
+<img src="/truefactor.png">
+
 Now, when it is crystal clear this design is so badly flawed, and must die as soon as possible, let's try to find a solution.
 
 It should not involve any kind of special hardware: 
@@ -32,11 +34,6 @@ It should not involve any kind of special hardware:
 
 This is why U2F is by no means a solution to The Problem, albeit <a href="https://www.assembla.com/spaces/cryptostick/wiki">Crypto Sticks for PGP conversations</a> are generally useful when 1 press is access to 1 email, not access to everything in your account.
 
-
-
-
-
-
 ## User experience
 
 Imagine this: I lost all my devices so I buy a new laptop and a smartphone. When I open my laptop it is empty. How do I get my passwords, private keys, Bitcoin wallets and everything else back?
@@ -48,10 +45,6 @@ Only the person who knows both MyPassword and MyIdentity can derive the master k
 The clouds are zero knowledge: all they have is public keys with corresponding bundles. 
 
 
-
-
-
-
 ## Truefactor is a blend of following ideas:
 
 1) <a href="https://keybase.io/warp/warp_1.0.6_SHA256_e68d4587b0e2ec34a7b554fbd1ed2d0fedfaeacf3e47fbb6c5403e252348cbfc.html">WarpWallet</a>. While I'm strongly against any kind of brainwallet, using email as a salt is a great idea, and drastically slows down bruteforce attempts. Essentionally, bruting "datsmypassword" is at least N times easier than "datsmypassword:homakov@gmail.com" where N is number of emails you have to try (<a href="http://www.internetlivestats.com/internet-users/">at least 3 billion</a>)
@@ -60,14 +53,11 @@ The clouds are zero knowledge: all they have is public keys with corresponding b
 
 3) TOTP and 2FA. It adds timeness to prevent replay attacks. Truefactor supports both expire_at and timestamp based signatures. Might support counter-based timeness in the future, yet I believe everyone should sync their clock.
 
-
-
 ## Make people use good master passwords
 
 1) gradually make it complex, remind them to set a better password when they use truefactor app long enough, e.g. have at least 5 connected applications
 
 2) help them to create one?, e.g. "look around yourself", "what was your last dream" etc. 
-
 
 
 ## Interactions with truefactor app
