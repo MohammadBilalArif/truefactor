@@ -22,8 +22,6 @@ Anyway, a password manager is an ugly "monkey patch" - it injects Javascript cod
 
 ## Key to your digital life
 
-<img src="/truefactor.png">
-
 Now, when it is **crystal clear this design is so badly flawed and must die as soon as possible**, let's try to find a solution.
 
 It should not involve any kind of special hardware: 
@@ -47,6 +45,8 @@ Did you know that all 2FA services (except manual Google Authenticator, of cours
 Did you know that your 1st factor is also kind of broken because Gmail and other email providers can reset passwords and log into literally 99% of your accounts? 
 
 In Truefactor, there's no central authority, no one can log in your account or prevent you from doing so: even backup servers are optional and you can deploy your own or use other storage options.
+
+<img src="/truefactor.png">
 
 ## User experience
 
@@ -108,7 +108,7 @@ January 2016 - release
 
 ## APIs and integrations
 
-Must take not more than 5 minutes to integrate in any existing application. Ruby (devise ext), python, php (wordpress ext).
+Must take not more than 5 minutes to integrate in any existing application. First of all ruby (devise plugin), python, php (wordpress plugin). Then iOS and toolkit for SSH and command line.
 
 ## Want to help?
 
