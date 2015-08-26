@@ -74,14 +74,23 @@ The server only stores your public key with corresponding bundle. Even if all bu
 
 3) TOTP. It adds timeness to prevent replay attacks. Truefactor supports both expire_at and timestamp based signatures (for offline codes). Might support counter-based timeness in the future, yet I believe everyone should sync their clock.
 
-4) Transparent 2FA and transaction verification. An application can ask Truefactor app to sign strings like "Send 1 BTC to 1Addr" or verify if "Your deposit address is 1Addr" is a valid response. Also known as <a href="https://en.wikipedia.org/wiki/Mutual_authentication">mutual authentication</a>. It helps against XSS and local man-in-the-browser attacks. You can also pair your laptop Truefactor with mobile one, and it will save you if one of your devices gets completely compromised. No one does it yet. Very few online banks do proper transaction verification. With truefactor it's 2 lines of code. 
+4) Phishing protection. web.truefactor.io verifies message.origin, while desktop truefactor app only sends codes to redirect_uri on originalapp.com domain.
+
+## type=verifier. 
+
+An application can ask Truefactor app to sign strings like "Send 1 BTC to 1Addr" or verify if "Your deposit address is 1Addr" is a valid response. Also known as <a href="https://en.wikipedia.org/wiki/Mutual_authentication">mutual authentication</a>. It helps against XSS and local man-in-the-browser attacks. You can also pair your laptop Truefactor with mobile one, and it will save you if one of your devices gets completely compromised. No one does it yet. Very few online banks do proper transaction verification. With truefactor it's 2 lines of code. 
+
+If victim's `users` table with public keys is leaked the users don't even have to change anything. If the app uses response verification ("your deposit address is Addr"), it's a good idea to regenerate truefactor keys.
 
 <img src="/demo.png">
 
-5) Phishing protection. web.truefactor.io verifies message.origin, while desktop truefactor app only sends codes to redirect_uri on originalapp.com domain.
+Instead of storing shared secrets, the remote app stores a public key. Ideally, every request should be signed with this key, but given the poor nature of web cookies, time-based signature of "login" should be exchanged for a session id stored in a cookie. This "sid" token can be used for any GET request except critical ones like `/show_api_keys` and most POST requests except `/send_money` or `/truefactor?action=refresh`. Unfortunatelly this is how web works, browsers don't sign the request, they just pass the shared secret along. 
+
+But critical requests should be manually signed. An app opens truefactor window with challenge="Send 1 to address". The private key is used to sign "Send 1 to address:#{timestamp}" and is passed back to `opener`. This prevents XSS from doing critical actions on behalf of your account. 
+
+For multisig you can require as many truefactor devices (approvers) as you want. Your primary truefactor passes the challenge to Truefactor server in an encrypted message for MyPub2, the mobile app fetches the message, decrypts it with MyPriv2, asks the user to approve it, sends the signature back to primary device in an encrypted message to MyPub. Now when you have signatures for both public keys, the form to /send_money can be submitted.
 
 ## Make people use good master passwords?
-
 
 1) gradually make it complex, remind them to set a better password when they use truefactor app long enough, e.g. when they get 5 connected applications
 
@@ -105,7 +114,6 @@ The server only stores your public key with corresponding bundle. Even if all bu
 September 2015 - Minimal Viable Product, web version
 
 January 2016 - release
-
 
 
 ## APIs and integrations
