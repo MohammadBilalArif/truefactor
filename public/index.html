@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Truefactor</title>
+  <meta property="og:title" content="Truefactor" />
+  <meta property="og:type" content="company" />
+  <meta property="og:site_name" content="Truefactor" />
+  <meta property="og:description" content="Truefactor is a keychain to replace passwords and 2FA solutions with reliable software." />
+  <meta property="og:url" content="truefactor.io" />
+  <meta property="og:image" content="" />
+  <meta charset="unicode" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+
+  <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1'/>
+  <meta name="application-name" content="Truefactor Web" />
+  <meta name="apple-mobile-web-app-title" content="Truefactor Web">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/hmac-sha1.js"></script>
+  <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/visibility.js/1.2.1/visibility.min.js"></script>
+  <script src="/application.js"></script>
+  <script src="/main.js"></script>
+<style>
+.area{
+  margin:5px;
+  padding:5px;
+}
+.box {
+  float: left;
+  width: 200px;
+  height: 100px;
+  margin: 1em;
+}
+.after-box {
+  clear: left;
+}
+
+.green{
+  background-color: green;
+}
+
+.red{
+  background-color: red;
+}
+
+.blue{
+  background-color:#D1E5FF;
+}
+
+.btn{
+  padding:10px;
+  min-width:100px;
+  display:inline-block;
+}
+
+.h{
+  display:none;
+}
+
+body{
+  width: 320px;
+  margin: auto;
+}
+
+.approve{
+  background-image:url(/btnapprove.png);
+  display:inline-block;
+  width:150px;
+  height:50px;
+}
+.deny{
+  background-image:url(/btndeny.png);
+  display:inline-block;
+  width:150px;
+  height:50px;
+}
+
+.request-form .input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 0 15px;
+    background: none;
+    line-height: 55px;
+    border: 2px #fff solid;
+    font: 400 21px/24px Circe_light, Verdana, sans-serif;
+    color: #fff;
+}
+
+</style>
+</head>
+<body>
+<div>
+  <img src="tf.png" onclick="build()" width="200px">
+  <span onclick="return toggleMenu();" style="float:right;padding:15px;min-height:20px">☰</span>
+</div>
+
+<div id="authrequest" style="display:none;">
+
+
+  <div class="h menu" >
+    <div class="factorize area blue">Require 2 Factor</div>  
+    <div class="delete area red">Delete</div>
+  </div>
+  <div class="main">
+
+
+
+    <table width="100%">
+      <tr>
+        <td>Application:</td>
+        <td><strong id="origin"></strong></td>
+      </tr>
+      <tr>
+        <td>Account:</td>
+        <td><select style="width:150px"  id="tfid"></select></td>
+      </tr>  
+
+
+
+      <tr class="h">
+        <td>Email:</td>
+        <td><input class="custom" id="email" value=""></td>
+      </tr>  
+      <tr class="h">
+        <td>Username:</td>
+        <td><input class="custom" id="username" value=""></td>
+      </tr>  
+
+
+      <tr>
+        <td>Request:</td>
+        <td><textarea style="width:150px" id="message"></textarea></td>
+      </tr>
+
+      <tr style="display:none">
+        <td><canvas id="canvas"></canvas></td>
+      </tr>
+
+
+
+
+      <tr class="h">
+        <td>Code:</td>
+        <td id="testmix"><input class="input" style="width:150px" id="otpmix"></td>
+      </tr>
+
+
+      <tr class="h">
+        <td id="otp0info">1st code (for 2FA):</td>
+        <td><input id="otp0" placeholder="Check primary device"></td>
+      </tr>      
+
+
+      <tr class="h">
+        <td id="otp1info">2nd code (for 2FA):</td>
+        <td><input id="otp1" placeholder="Check secondary device"></td>
+      </tr>
+    </table>
+    <div class="h" id="clock" style="width:100%;"></div>
+    <br>
+    <div class="h buttons">
+      <span class="approve"></span>
+      <span class="deny"></span>
+    </div>    
+    <br>
+    <center><div class="h verified"></div>
+    </center>
+  </div>
+</div>
+
+<div id="main" style="display:none">
+  <div class="menu h">
+    <div class="area red" onclick="localStorage.clear()">Clear Vault</div>
+    <div class="area blue" onclick="backup()">Add Secondary Device</div>
+    <div class="area blue"><input id="letters" onchange="localStorage.letters = this.checked;" type="checkbox">ABCD-EFGH Code Format</div>
+  </div>
+
+  <div class="main" id="origins">
+<div>Truefactor is a concept of zero-knowledge keychain to replace passwords and 2FA with a better scheme. <a href="/info">More info</a></div>
+
+
+<div>You don't have any applications yet. Try to sign up on <a href="http://cobased.com/users/sign_up">Cobased</a> or check out the <a href="/playground">Playground</a>!</div>
+  </div>
+</div>
+
+
+
+
+<div class="passphrase" style="display:none">
+  enter passphrase
+
+</div>
+
+
+
+
+
+
+<div id="log"></div>
+</body>
+</html>
+
