@@ -28,15 +28,19 @@ Now, when it is **crystal clear this design is so badly flawed and must die as s
 
 It should not involve any kind of special hardware: 
 
-1) Hardware is expensive. Not for me and you, of course, but there are 6+ billion people on this planet, and our goal is to help them all. U2F stick for $19 is a joke.
+1) Hardware is expensive. Not for me and you, of course, but there are 6+ billion people on this planet, and our goal is to help them all. U2F stick for $18 is a joke.
 
-2) Hardware is easy to lose and impossible to backup. "Backup codes" you were supposed to write down is also a joke and user experience nightmare.
+<img src="/u2f.png">
+
+2) Hardware is easy to lose and impossible to backup. "Backup codes" you were supposed to write down is also a joke and user experience nightmare. Some of them even offer to use TWO sticks. 
+
+<img src="usetwo.png">
 
 3) Most important one: hardware without a display and buttons cannot be used for out-of-band transaction verification. Ones with display (like Trezor) start at $119. Lots of Android phones (which can also be used for everyday tasks) are cheaper than that. 
 
-This is why U2F is by no means a solution to The Problem, albeit <a href="https://www.assembla.com/spaces/cryptostick/wiki">Crypto Sticks for PGP conversations</a> are generally useful when 1 press is access to 1 email, not access to everything in your account.
+This is why **U2F is by no means a solution to The Problem**, albeit <a href="https://www.assembla.com/spaces/cryptostick/wiki">Crypto Sticks for PGP conversations</a> are generally useful when 1 press is access to 1 email, not access to everything in your account.
 
-It must be end-2-end and not rely on any central authority. <a href="http://www.oauthsecurity.com/">This is why OAuth is a horrible idea for authentication</a>. 
+It must be **end-2-end and not rely on any central authority**. <a href="http://www.oauthsecurity.com/">This is why OAuth is a horrible idea for authentication</a>. 
 
 Did you know that all 2FA services (except manual Google Authenticator, of course) such as Authy or Duo are not end-2-end, and that's why you still need to have 1st factor?
 
@@ -67,6 +71,7 @@ The server only stores your public key with corresponding bundle. Even if all bu
 
 4) Transparent 2FA and transaction verification. An application can ask Truefactor app to sign strings like "Send 1 BTC to 1Addr" or verify if "Your deposit address is 1Addr" is a valid response. Also known as <a href="https://en.wikipedia.org/wiki/Mutual_authentication">mutual authentication</a>. It helps against XSS and local man-in-the-browser attacks. You can also pair your laptop Truefactor with mobile one, and it will save you if one of your devices gets completely compromised. No one does it yet. Very few online banks do proper transaction verification. With truefactor it's 2 lines of code. 
 
+5) Phishing protection. web.truefactor.io verifies message.origin, while desktop truefactor app only sends codes to redirect_uri on originalapp.com domain.
 
 ## Make people use good master passwords?
 
