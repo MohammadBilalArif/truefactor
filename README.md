@@ -20,7 +20,7 @@ Which means 99% of people reuse passwords. They have no other choice. They are v
 
 Anyway, a password manager is an ugly "monkey patch" - it injects Javascript code into every website that finds `<input type=password>` and autofills it.
 
-## The Solution
+## Key to your digital life
 
 <img src="/truefactor.png">
 
@@ -65,20 +65,18 @@ The server only stores your public key with corresponding bundle. Even if all bu
 
 3) TOTP. It adds timeness to prevent replay attacks. Truefactor supports both expire_at and timestamp based signatures (for offline codes). Might support counter-based timeness in the future, yet I believe everyone should sync their clock.
 
-4) Transparent 2FA and transaction verification. An application can ask Truefactor app to sign strings like "Send 1 BTC to 1Addr" or verify if "Your deposit address is 1Addr" is a valid response. Also known as <a href="https://en.wikipedia.org/wiki/Mutual_authentication">mutual authentication</a>. It helps against XSS and local man-in-the-browser attacks. You can also pair your laptop Truefactor with mobile one, and it will save you ifone of your devices gets compromised.
+4) Transparent 2FA and transaction verification. An application can ask Truefactor app to sign strings like "Send 1 BTC to 1Addr" or verify if "Your deposit address is 1Addr" is a valid response. Also known as <a href="https://en.wikipedia.org/wiki/Mutual_authentication">mutual authentication</a>. It helps against XSS and local man-in-the-browser attacks. You can also pair your laptop Truefactor with mobile one, and it will save you if one of your devices gets completely compromised. No one does it yet. Very few online banks do proper transaction verification. With truefactor it's 2 lines of code. 
 
 
+## Make people use good master passwords?
 
 
-## Make people use good master passwords
-
-
-1) gradually make it complex, remind them to set a better password when they use truefactor app long enough, e.g. have at least 5 connected applications
+1) gradually make it complex, remind them to set a better password when they use truefactor app long enough, e.g. when they get 5 connected applications
 
 2) help them to create one?, e.g. "look around yourself", "what was your last dream" etc. 
 
 
-## Interactions with truefactor app
+## Types of interactions with truefactor app
 
 1) window.open and postMessage
 
