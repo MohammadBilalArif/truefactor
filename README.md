@@ -14,7 +14,7 @@ By the way passwords like MasterPassgoogle.com MasterPasstwitter.com are better 
 
 I just counted passwords I currently use. Four 8 letters long, four about 18 and two about 30 letters, **10 passwords in total** ("is that it? what kind of security expert are you, lol?"). But there are hundreds of apps. I bet most people can't remember that many complex and unique passwords. But every single website wants you to do it, and never mentions that "password managers" even exist (hence < 1% market penetration rate).
 
-Which means 99% of people reuse passwords. They have no other choice. They are vulnerable by design, and one day a leaked password will compromise their other accounts. The system makes no single attempt to help them. Yet another website does not care if you reuse your passwords, they think it is your problem and responsability.
+Which means 99% of people reuse passwords. **They have no other choice**. They are vulnerable by design, and one day a leaked password will compromise their other accounts. The system makes no single attempt to help them. Yet another website does not care if you reuse your passwords, they think it is your problem and responsability.
 
 *"Just use a password manager"*. It's like letting people drive not explaining them what traffic lights are. When they get pwned: "Should have read about traffic lights somewhere. Your problem.". 
 
@@ -102,9 +102,11 @@ The server only stores your public key with corresponding bundle. Even if all bu
 
 ## Milestones
 
-September 2015 - Minimal Viable Product
+September 2015 - Minimal Viable Product, web version
 
 January 2016 - release
+
+
 
 ## APIs and integrations
 
