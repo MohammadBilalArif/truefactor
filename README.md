@@ -46,7 +46,7 @@ Did you know that all 2FA services (except manual Google Authenticator, of cours
 
 Did you know that your 1st factor is also kind of broken because Gmail and other email providers can reset passwords and log into literally 99% of your accounts? 
 
-In Truefactor, there's no central authority, no one can log in your account, even backup servers are optional and you can deploy your own.
+In Truefactor, there's no central authority, no one can log in your account or prevent you from doing so: even backup servers are optional and you can deploy your own or use other storage options.
 
 ## User experience
 
@@ -70,6 +70,8 @@ The server only stores your public key with corresponding bundle. Even if all bu
 3) TOTP. It adds timeness to prevent replay attacks. Truefactor supports both expire_at and timestamp based signatures (for offline codes). Might support counter-based timeness in the future, yet I believe everyone should sync their clock.
 
 4) Transparent 2FA and transaction verification. An application can ask Truefactor app to sign strings like "Send 1 BTC to 1Addr" or verify if "Your deposit address is 1Addr" is a valid response. Also known as <a href="https://en.wikipedia.org/wiki/Mutual_authentication">mutual authentication</a>. It helps against XSS and local man-in-the-browser attacks. You can also pair your laptop Truefactor with mobile one, and it will save you if one of your devices gets completely compromised. No one does it yet. Very few online banks do proper transaction verification. With truefactor it's 2 lines of code. 
+
+<img src="/demo.png">
 
 5) Phishing protection. web.truefactor.io verifies message.origin, while desktop truefactor app only sends codes to redirect_uri on originalapp.com domain.
 
