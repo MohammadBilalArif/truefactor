@@ -34,6 +34,14 @@ It should not involve any kind of special hardware:
 
 This is why U2F is by no means a solution to The Problem, albeit <a href="https://www.assembla.com/spaces/cryptostick/wiki">Crypto Sticks for PGP conversations</a> are generally useful when 1 press is access to 1 email, not access to everything in your account.
 
+It must be end-2-end and not rely on any central authority. <a href="http://www.oauthsecurity.com/">This is why OAuth is a horrible idea for authentication</a>. 
+
+Did you know that, all 2FA services such as Authy or Duo are not end-2-end, and that's why you still need to have 1st factor?
+
+Did you know that Gmail and other email providers can reset passwords and log into literally 99% of your accounts?
+
+In Truefactor, there's no central authority, no one can log in your account, even backup servers are optional and you can run your own.
+
 ## User experience
 
 Imagine this: I lost all my devices so I buy a new laptop and a smartphone. When I open my laptop it is empty. How do I get my passwords, private keys, Bitcoin wallets and everything else back?
@@ -49,13 +57,19 @@ The server only stores your public key with corresponding bundle. Even if all bu
 
 ## Truefactor is a blend of following ideas:
 
-1) <a href="https://keybase.io/warp/warp_1.0.6_SHA256_e68d4587b0e2ec34a7b554fbd1ed2d0fedfaeacf3e47fbb6c5403e252348cbfc.html">WarpWallet</a>. While I'm strongly against any kind of brainwallet, using email as a salt is a great idea, and drastically slows down bruteforce attempts. Essentionally, bruting "datsmypassword" is at least N times easier than "datsmypassword:homakov@gmail.com" where N is number of emails you have to try (<a href="http://www.internetlivestats.com/internet-users/">at least 3 billion</a>)
+1) <a href="https://keybase.io/warp/warp_1.0.6_SHA256_e68d4587b0e2ec34a7b554fbd1ed2d0fedfaeacf3e47fbb6c5403e252348cbfc.html">WarpWallet</a>. While I'm strongly against any kind of brainwallet, using email as a salt is a great idea, and drastically slows down bruteforce attempts. Bruting "datsmypassword:homakov@gmail.com" is N times harder than "datsmypassword", N is number of emails you have to try (<a href="http://www.internetlivestats.com/internet-users/">at least 3 billion</a>)
 
-2) Passwords managers. Bundles are encrypted with MyPriv. But the point of Truefactor is to make backup process seamless, anonymouse (aka Zero Knowledge) and painless. No Dropbox, for sure. Specs of Truefactor-compatible server are coming soon.
+2) Passwords managers. Bundles are encrypted with MyPriv, there's nothing new here. But unlike password managers that require you to store the bundle "somewhere else", like Dropbox, which makes you remember another password, Truefactor backup process is seamless, anonymouse (aka Zero Knowledge) and painless. Dropbox/USB stick is an option though. Specs of Truefactor-compatible backup server are coming soon. Hopefully some big companies like Google who showed interest in killing passwords would deploy it on their servers.
 
-3) TOTP and 2FA. It adds timeness to prevent replay attacks. Truefactor supports both expire_at and timestamp based signatures. Might support counter-based timeness in the future, yet I believe everyone should sync their clock.
+3) TOTP. It adds timeness to prevent replay attacks. Truefactor supports both expire_at and timestamp based signatures. Might support counter-based timeness in the future, yet I believe everyone should sync their clock.
+
+4) Transparent 2FA and transaction verification. An application can ask Truefactor app(s) to sign strings like "Send 1 BTC to 1Addr" or verify if "Your deposit address is 1Addr" is valid response. It helps against XSS and local man-in-the-browser attacks. You can also pair your laptop Truefactor with mobile one, and it will save you ifone of your devices gets compromised.
+
+
+
 
 ## Make people use good master passwords
+
 
 1) gradually make it complex, remind them to set a better password when they use truefactor app long enough, e.g. have at least 5 connected applications
 
@@ -76,23 +90,13 @@ The server only stores your public key with corresponding bundle. Even if all bu
 
 ## Milestones
 
-1) September 2015 - Minimal Viable Product
+September 2015 - Minimal Viable Product
+
+January 2016 - release
 
 ## APIs and integrations
 
-Must take not more than 5 minutes to integrate in any existing application.
-
-Sign Up
-
-```
-@user = User.create(params[:user].)
-sign_in @user
-```
-
-```
-@user.sign(message)
-```
-
+Must take not more than 5 minutes to integrate in any existing application. Ruby (devise ext), python, php (wordpress ext).
 
 ## Want to help?
 
