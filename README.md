@@ -4,6 +4,8 @@
 
 In the real world humans use eyes and ears to observe different details in other humans to authenticate who is who. It includes face, voice, body type, shared memories etc. All these things are very hard to fake simultaneously, it won't look natural enough. 
 
+<img src="/faces.jpg">
+
 But in digital world, we have nothing to observe about the person sitting on the other end of the wire. It's all input and output streams of bits. That's why we invented shared secrets, stored in our memory - passwords. Biometrics does work  with physical security devices, but doesn't make sense in the digital world.
 
 In digital world we log in hundreds and thousands remote applications (websites). Unfortunatelly, once your password is leaked, it can be reused by a 3rd party. That's why it is essential to use both unique and complex password for every website.
