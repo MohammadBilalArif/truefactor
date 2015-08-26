@@ -38,11 +38,13 @@ This is why U2F is by no means a solution to The Problem, albeit <a href="https:
 
 Imagine this: I lost all my devices so I buy a new laptop and a smartphone. When I open my laptop it is empty. How do I get my passwords, private keys, Bitcoin wallets and everything else back?
 
-With Truefactor, all you need is email and password. "MyPassword:MyIdentifier" is used to derive your master private and public keys (MyPriv/MyPub). Truefactor application sends requests (signed with MyPriv) to distributed Truefactor servers `https://truefactor.io/getvault?public_key=MyPub&signature=SIG`. They respond with encrypted bundle that be decrypted with MyPriv.
+With Truefactor, all you need is email and password. "MyPassword:MyIdentifier" is used to derive your master private and public keys (MyPriv/MyPub). Truefactor application sends requests (signed with MyPriv) to distributed Truefactor servers `https://truefactor.io/getvault?public_key=MyPub&signature=SIG`. They respond with encrypted bundle that can be decrypted with MyPriv.
 
-Only the person who knows both MyPassword and MyIdentity can derive the master key to download and decrypt the bundle. It is safely backed up to different clouds around the world, which do their best to stop bruteforce attacks with IP banning and hashcash, unlike Bitcoin blockchain: Brainwallet.com was a great idea but poor implementation.
+Only the person who knows both MyPassword and MyIdentity can derive the master key to download and decrypt the bundle. 
 
-The clouds are zero knowledge: all they have is public keys with corresponding bundles. 
+It is can be backed up to USB stick, even cloud services like Dropbox, but it's a bad idea since Dropbox knows your salt (email) which makes bruteforce plausbile. Original Truefactor servers do their best to stop bruteforce attacks with IP banning and hashcash. This is why brainwallet-ing your bundle with Truefactor servers is better than public blockchains - it can rate limit.
+
+The server only stores your public key with corresponding bundle. Even if all bundles are leaked it is not a big deal: attackers would have to brute 1 000 000 (top passwords) for 3 000 000 000 different salts (emails, if they have it), for few seconds each (key derivation complexity).
 
 
 ## Truefactor is a blend of following ideas:
