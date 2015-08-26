@@ -36,11 +36,11 @@ This is why U2F is by no means a solution to The Problem, albeit <a href="https:
 
 It must be end-2-end and not rely on any central authority. <a href="http://www.oauthsecurity.com/">This is why OAuth is a horrible idea for authentication</a>. 
 
-Did you know that, all 2FA services such as Authy or Duo are not end-2-end, and that's why you still need to have 1st factor?
+Did you know that all 2FA services (except manual Google Authenticator, of course) such as Authy or Duo are not end-2-end, and that's why you still need to have 1st factor?
 
-Did you know that Gmail and other email providers can reset passwords and log into literally 99% of your accounts?
+Did you know that your 1st factor is also kind of broken because Gmail and other email providers can reset passwords and log into literally 99% of your accounts? 
 
-In Truefactor, there's no central authority, no one can log in your account, even backup servers are optional and you can run your own.
+In Truefactor, there's no central authority, no one can log in your account, even backup servers are optional and you can deploy your own.
 
 ## User experience
 
@@ -50,7 +50,7 @@ With Truefactor, all you need is email and password. "MyPassword:MyIdentifier" i
 
 Only the person who knows both MyPassword and MyIdentity can derive the master key to download and decrypt the bundle. 
 
-It is can be backed up to USB stick, even cloud services like Dropbox, but it's a bad idea since Dropbox knows your salt (email) which makes bruteforce plausbile. Original Truefactor servers do their best to stop bruteforce attacks with IP banning and hashcash. This is why brainwallet-ing your bundle with Truefactor servers is better than public blockchains - it can rate limit.
+The bundle can be copied to a USB stick or cloud services like Dropbox, but it's a bad idea since Dropbox knows your salt (email) which makes bruteforce more feasible. Truefactor servers do their best to stop bruteforce attacks with IP banning and hashcash. This is why brainwallet-ing your bundle with such server is better than storing it in a public blockchain - the server can rate limit.
 
 The server only stores your public key with corresponding bundle. Even if all bundles are leaked it is not a big deal: attackers would have to brute 1 000 000 (top passwords) for 3 000 000 000 different salts (emails, if they have it), for few seconds each (key derivation complexity).
 
