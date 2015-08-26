@@ -16,7 +16,7 @@ Which means 99% of people reuse passwords. They have no other choice. They are v
 
 "Just use a password manager". It's like letting people drive not explaining them what traffic lights are. When they get pwned: "Should have read about traffic lights somewhere. Your problem.". 
 
-Anyway, a password manager is an ugly "monkey patch" - it injects Javascript code into every website that finds <input type=password> and autofills it.
+Anyway, a password manager is an ugly "monkey patch" - it injects Javascript code into every website that finds `<input type=password>` and autofills it.
 
 ## The Solution
 
