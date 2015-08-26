@@ -59,11 +59,11 @@ The server only stores your public key with corresponding bundle. Even if all bu
 
 1) <a href="https://keybase.io/warp/warp_1.0.6_SHA256_e68d4587b0e2ec34a7b554fbd1ed2d0fedfaeacf3e47fbb6c5403e252348cbfc.html">WarpWallet</a>. While I'm strongly against any kind of brainwallet, using email as a salt is a great idea, and drastically slows down bruteforce attempts. Bruting "datsmypassword:homakov@gmail.com" is N times harder than "datsmypassword", N is number of emails you have to try (<a href="http://www.internetlivestats.com/internet-users/">at least 3 billion</a>)
 
-2) Passwords managers. Bundles are encrypted with MyPriv, there's nothing new here. But unlike password managers that require you to store the bundle "somewhere else", like Dropbox, which makes you remember another password, Truefactor backup process is seamless, anonymouse (aka Zero Knowledge) and painless. Dropbox/USB stick is an option though. Specs of Truefactor-compatible backup server are coming soon. Hopefully some big companies like Google who showed interest in killing passwords would deploy it on their servers.
+2) Passwords managers. Bundles are encrypted with MyPriv, there's nothing new here. But unlike password managers that require you to store the bundle "somewhere else", like Dropbox, which makes you remember another password, Truefactor backup process is seamless, anonymouse (aka Zero Knowledge) and painless. Dropbox/USB stick is an option though. Specs of Truefactor-compatible backup server are coming soon. Hopefully some big companies like Google who showed interest in killing passwords will deploy it on their servers.
 
-3) TOTP. It adds timeness to prevent replay attacks. Truefactor supports both expire_at and timestamp based signatures. Might support counter-based timeness in the future, yet I believe everyone should sync their clock.
+3) TOTP. It adds timeness to prevent replay attacks. Truefactor supports both expire_at and timestamp based signatures (for offline codes). Might support counter-based timeness in the future, yet I believe everyone should sync their clock.
 
-4) Transparent 2FA and transaction verification. An application can ask Truefactor app(s) to sign strings like "Send 1 BTC to 1Addr" or verify if "Your deposit address is 1Addr" is valid response. It helps against XSS and local man-in-the-browser attacks. You can also pair your laptop Truefactor with mobile one, and it will save you ifone of your devices gets compromised.
+4) Transparent 2FA and transaction verification. An application can ask Truefactor app to sign strings like "Send 1 BTC to 1Addr" or verify if "Your deposit address is 1Addr" is a valid response. Also known as <a href="https://en.wikipedia.org/wiki/Mutual_authentication">mutual authentication</a>. It helps against XSS and local man-in-the-browser attacks. You can also pair your laptop Truefactor with mobile one, and it will save you ifone of your devices gets compromised.
 
 
 
@@ -100,7 +100,7 @@ Must take not more than 5 minutes to integrate in any existing application. Ruby
 
 ## Want to help?
 
-This is open source and non-profit project. If you care about authentication and want to join, drop me a line homakov@gmail.com
+This is open source and non-profit project. If you care about authentication and want to join, drop me a line homakov@gmail.com I'm a security guy, so all kinds of programmers, designers and UX experts are welcome.
 
 
 
