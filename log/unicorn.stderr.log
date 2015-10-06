@@ -1,0 +1,10 @@
+F, [2015-09-19T00:53:13.949920 #84075] FATAL -- : error adding listener addr=./tmp/sockets/unicorn.sock
+/Users/homakov/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/unicorn-4.9.0/lib/unicorn/socket_helper.rb:167:in `bind_listen': Don't know how to bind: ./tmp/sockets/unicorn.sock (ArgumentError)
+	from /Users/homakov/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/unicorn-4.9.0/lib/unicorn/http_server.rb:242:in `listen'
+	from /Users/homakov/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/unicorn-4.9.0/lib/unicorn/http_server.rb:813:in `block in bind_new_listeners!'
+	from /Users/homakov/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/unicorn-4.9.0/lib/unicorn/http_server.rb:813:in `each'
+	from /Users/homakov/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/unicorn-4.9.0/lib/unicorn/http_server.rb:813:in `bind_new_listeners!'
+	from /Users/homakov/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/unicorn-4.9.0/lib/unicorn/http_server.rb:138:in `start'
+	from /Users/homakov/.rbenv/versions/2.1.1/lib/ruby/gems/2.1.0/gems/unicorn-4.9.0/bin/unicorn:126:in `<top (required)>'
+	from /Users/homakov/.rbenv/versions/2.1.1/bin/unicorn:23:in `load'
+	from /Users/homakov/.rbenv/versions/2.1.1/bin/unicorn:23:in `<main>'

@@ -128,3 +128,42 @@ This is open source and non-profit project. If you care about authentication and
 
 
 
+## Should passwords be killed? 
+
+There is no way to "kill" passwords. 
+
+
+
+
+## Credential management
+
+https://w3c.github.io/webappsec/specs/credentialmanagement
+
+Doesn't sign
+
+
+
+
+# Threat model
+
+## password reuse 
+
+if it was leaked somewhere else
+
+No party should ever see master password in plain text.
+
+
+## bruteforce
+
+too simple 
+
+## man in the middle
+
+
+"you are who you say you are" + "you are permitted to do what you are trying to do"
+
+
+alg = hmac / identity / verifier
+
+
+

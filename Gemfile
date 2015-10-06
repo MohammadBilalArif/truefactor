@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 gem 'unicorn'
+gem 'sinatra'
+
 #gem 'rack', '1.6.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 

@@ -1,212 +1,316 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Truefactor</title>
-  <meta property="og:title" content="Truefactor" />
-  <meta property="og:type" content="company" />
-  <meta property="og:site_name" content="Truefactor" />
-  <meta property="og:description" content="Truefactor is a keychain to replace passwords and 2FA solutions with reliable software." />
-  <meta property="og:url" content="truefactor.io" />
-  <meta property="og:image" content="" />
-  <meta charset="unicode" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
+<!doctype html>
+<html manifest="/a.appcache">
+  <head>
+    <meta charset="utf-8">
+    <meta property="og:title" content="Truefactor" />
+    <meta property="og:type" content="company" />
+    <meta property="og:site_name" content="Truefactor" />
+    <meta property="og:description" content="Truefactor is a keychain to replace passwords and 2FA solutions with reliable software." />
+    <meta property="og:url" content="truefactor.io" />
+    <meta property="og:image" content="" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Truefactor</title>
+    <link href="/css/fonts.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/extra.css">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+    <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1'/>
+    <meta name="application-name" content="Truefactor Web" />
+    <meta name="apple-mobile-web-app-title" content="Truefactor Web">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <script src="/js/jquery-2.1.4.js"></script>
+    <script src="/js/aes.js"></script>
+    <script src="/js/visibility.js"></script>
+    <script src="/js/forge.bundle.js"></script>
+
+    <script src="/forge/jsbn.js"></script>
+
+    <script src="/js/scrypt.js"></script>
+    <script src="/js/application.js"></script>
+    <script src="/js/main.js"></script>
+  </head>
+  <body>
 
 
-  <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no, maximum-scale=1, minimum-scale=1'/>
-  <meta name="application-name" content="Truefactor Web" />
-  <meta name="apple-mobile-web-app-title" content="Truefactor Web">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/hmac-sha1.js"></script>
-  <script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/aes.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/visibility.js/1.2.1/visibility.min.js"></script>
-  <script src="/application.js"></script>
-  <script src="/main.js"></script>
-<style>
-.area{
-  margin:5px;
-  padding:5px;
-}
-.box {
-  float: left;
-  width: 200px;
-  height: 100px;
-  margin: 1em;
-}
-.after-box {
-  clear: left;
-}
-
-.green{
-  background-color: green;
-}
-
-.red{
-  background-color: red;
-}
-
-.blue{
-  background-color:#D1E5FF;
-}
-
-.btn{
-  padding:10px;
-  min-width:100px;
-  display:inline-block;
-}
-
-.h{
-  display:none;
-}
-
-body{
-  width: 320px;
-  margin: auto;
-}
-
-.approve{
-  background-image:url(/btnapprove.png);
-  display:inline-block;
-  width:150px;
-  height:50px;
-}
-.deny{
-  background-image:url(/btndeny.png);
-  display:inline-block;
-  width:150px;
-  height:50px;
-}
-
-.request-form .input {
-    display: block;
-    height: 50px;
-    width: 100%;
-    box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    padding: 0 15px;
-    background: none;
-    line-height: 55px;
-    border: 2px #fff solid;
-    font: 400 21px/24px Circe_light, Verdana, sans-serif;
-    color: #fff;
-}
-
-</style>
-</head>
-<body>
-<div>
-  <img src="tf.png" onclick="build()" width="200px">
-  <span onclick="return toggleMenu();" style="float:right;padding:15px;min-height:20px">☰</span>
-</div>
-
-<div id="authrequest" style="display:none;">
+    <header class="index-header h">
+      <a href="">
+        <img class="open-settings" src="img/icon_drawer.svg" alt="" ng-click="toggleSettings()">
+      </a>
+      <div class="logo">
+        <img src="img/icon_truefactor.svg" alt="">
+        <img src="/box.gif" style="visibility:hidden">
+      </div>
+      <div class="header-text">
+        <span>Truefactor</span>
+      </div>
+      <img class="add" src="img/icon_add_app.svg" alt="">
+    </header>
 
 
-  <div class="h menu" >
-    <div class="factorize area blue">Require 2 Factor</div>  
-    <div class="delete area red">Delete</div>
-  </div>
-  <div class="main">
+    <header class="index-header h">
+      <a href="list.html">
+        <img class="go-back" src="img/icon_go_back.svg" alt="">
+      </a>
+      <div class="logo">
+        <img src="img/icon_truefactor.svg" alt="">
+      </div>
+      <div class="header-text">
+        <span>Authorize app</span>
+      </div>
+    </header>
+
+
+    <div class="login-screen container">
+      <div class="splash-screen">
+        <img class="logo" src="img/icon_truefactor.svg" alt="">
+        <img class="text" src="img/text_truefactor.svg" alt="">
+        <div class="please-sign-in">Choose unique email + passphrase combination</div>
+        <div class="settings-control-group login-form">
+          <input required=true type="email" id="login" class="settings-control-input" placeholder="E-mail">
+          <input required=true type="password" id="passphrase" class="settings-control-input" placeholder="Passphrase">
+
+          <a class="btn sign-in">Open vault</a>
+        </div>
+      </div>
+    </div>
 
 
 
-    <table width="100%">
-      <tr>
-        <td>Application:</td>
-        <td><strong id="origin"></strong></td>
-      </tr>
-      <tr>
-        <td>Account:</td>
-        <td><select style="width:150px"  id="tfid"></select></td>
-      </tr>  
+    <div class="auth app-auth-screen container active h">
+      <div class="app">
+        <img class="app-logo" style="display:none" alt="">
+        <h2 class="app-name"></h2>
+        <div class="app-description">
+          <p></p>
+        </div>
+      </div>
+      <div class="app-settings">
+        <div class="settings-control-group">
+          <label for="account" class="settings-control-label">Account</label>
+          <select type="text" id="account" class="settings-control-input h">
+
+          </select>
+        </div>
+
+        <div class="settings-control-group">
+          <label for="request" class="settings-control-label">Request</label>
+          <textarea style="height:60px;" id="request" spellcheck="off" class="settings-control-input">login</textarea>
+        </div>
 
 
+        <div class="settings-control-group h">
+          <label for="security-code" class="settings-control-label"><b>First</b> security code</label>
+          <input type="text" id="otp0" class="settings-control-input large disabled" placeholder="0000 0000 0000">
+        </div>
+        <div class="settings-control-group h">
+          <label for="security-code" class="settings-control-label"><b>Second</b> security code</label>
+          <input type="text" id="otp1" class="settings-control-input large disabled" placeholder="0000 0000 0000">
+        </div>
 
-      <tr class="h">
-        <td>Email:</td>
-        <td><input class="custom" id="email" value=""></td>
-      </tr>  
-      <tr class="h">
-        <td>Username:</td>
-        <td><input class="custom" id="username" value=""></td>
-      </tr>  
+        <div class="settings-control-group h">
+          <label for="security-code" class="settings-control-label">Security code</label>
+          <input type="text" id="otpmix" class="settings-control-input large disabled" placeholder="0000 0000 0000">
+        </div>
 
 
-      <tr>
-        <td>Request:</td>
-        <td><textarea style="width:150px" id="message"></textarea></td>
-      </tr>
+        <div class="settings-control-group two-factor h">
+          <label for="peers" class="settings-control-label">Actions</label>
+          <select type="text" id="peers" class="settings-control-input h">
+          </select>
+        </div>
+      </div>
 
-      <tr style="display:none">
-        <td><canvas id="canvas"></canvas></td>
-      </tr>
+      <div class="stick-to-bottom">
+        <div class="progress-indicator h">
+          <p class="progress-description">59 seconds left...</p>
+          <div id="progress-bar" class="progress-bar"></div>
+        </div>
+        <div class="action-buttons">
+          <a class="btn approve">
+            <img src="img/icon_approve.svg" alt="">
+            <span class="approve-text">Approve</span>
+          </a>
+          <a class="btn deny">
+            <img src="img/icon_deny.svg" alt="">
+            <span class="deny-text">Deny</span>
+          </a>
+        </div>
+      </div>
+    </div>
 
 
 
 
-      <tr class="h">
-        <td>Code:</td>
-        <td id="testmix"><input class="input" style="width:150px" id="otpmix"></td>
-      </tr>
+    <div class="register app-auth-screen container active h">
+      <div class="app">
+        <img class="app-logo" style="display:none" onError="this.onerror=null;this.src='/icon.png';">
+        <h2 class="app-name"></h2>
+        <div class="app-description">
+          <p></p>
+        </div>
+      </div>
+      <div class="app-settings">
+        <div class="settings-control-group h">
+          <label for="account" class="email-label settings-control-label">Email</label>
+          <input type="text"  class="email settings-control-input" value="">
+        </div>
+
+        <div class="settings-control-group h">
+          <label for="account" class="settings-control-label">Username</label>
+          <input type="text"  class="username settings-control-input" value="">
+        </div>
 
 
-      <tr class="h">
-        <td id="otp0info">1st code (for 2FA):</td>
-        <td><input id="otp0" placeholder="Check primary device"></td>
-      </tr>      
+        <div class="settings-control-group existing-pw h">
+          <label for="account" class="settings-control-label">Or sign in using existing account</label>
+          <select type="text" id="account-pw" class="settings-control-input h">
+
+          </select>
+        </div>
 
 
-      <tr class="h">
-        <td id="otp1info">2nd code (for 2FA):</td>
-        <td><input id="otp1" placeholder="Check secondary device"></td>
-      </tr>
-    </table>
-    <div class="h" id="clock" style="width:100%;"></div>
-    <br>
-    <div class="h buttons">
-      <span class="approve"></span>
-      <span class="deny"></span>
-    </div>    
-    <br>
-    <center><div class="h verified"></div>
-    </center>
-  </div>
-</div>
-
-<div id="main" style="display:none">
-  <div class="menu h">
-    <div class="area red" onclick="localStorage.clear()">Clear Vault</div>
-    <div class="area blue" onclick="backup()">Add Secondary Device</div>
-    <div class="area blue"><input id="letters" onchange="localStorage.letters = this.checked;" type="checkbox">ABCD-EFGH Code Format</div>
-  </div>
-
-  <div class="main" id="origins">
-<div>Truefactor is a concept of zero-knowledge keychain to replace passwords and 2FA with a better scheme. <a href="/info">More info</a></div>
-
-
-<div>You don't have any applications yet. Try to sign up on <a href="http://cobased.com/users/sign_up">Cobased</a> or check out the <a href="/playground">Playground</a>!</div>
-  </div>
-</div>
-
-
-
-
-<div class="passphrase" style="display:none">
-  enter passphrase
-
-</div>
+    </div>
+      <div class="stick-to-bottom">
+        <div class="action-buttons">
+          <a class="btn approve">
+            <img src="img/icon_approve.svg" alt="">
+            Sign Up
+          </a>
+          <a class="btn deny">
+            <img src="img/icon_deny.svg" alt="">
+            Deny
+          </a>
+        </div>
+      </div>
+    </div>
 
 
 
 
 
 
-<div id="log"></div>
-</body>
+
+    <div class="apps-list-screen container h">
+      <p class="noapps h">You don't have any applications. <a href="http://cobased.com">Try cobased.com!</a></p>
+
+      <div class="index-search">
+        <input class="search-input" id="search" placeholder="Search" type="text" value="" required>
+      </div>
+      <div class="apps-list">
+        
+      </div>
+
+
+      <div class="add-new-app " onclick="screen('paired-truefactors')">
+        <button class="btn">
+          <img class="plus" src="img/icon_add_app.svg" alt="">
+          Paired Truefactors
+        </button>
+      </div>
+      
+      <div class="add-new-app my-notes" onclick="screen('notes-screen');">
+        <button class="btn">
+          My Notes
+        </button>
+      </div>
+
+      <div class="add-new-app move-vault" onclick="moveVault();">
+        <button class="btn">
+          Move Vault
+        </button>
+      </div>
+
+      <div class="add-new-app move-vault" onclick="download(localStorage.vault, 'TruefactorVault.txt', 'text/plain')">
+        <button class="btn">
+          Export
+        </button>
+      </div>
+      
+      <div class="add-new-app" onclick="return logout()">
+        <button class="btn">
+          Log out
+        </button>
+      </div>
+    </div>
+
+
+    <div class="paired-truefactors container h">
+      <div class="apps-list"></div>
+
+        <div>Scan with Qrafter then Open in Safari / Chrome</div>
+        <center><canvas id="canvasid"></canvas></center>
+        <p class=" your-id"></p>
+
+      <div class="settings-control-group ">
+        <label class="settings-control-label">Enter ID of Truefactor you want to pair with</label>
+        <input  type="number" min="0" inputmode="numeric" pattern="[0-9]*"  placeholder="0000 0000 0000 0000 0000 0000" id="truefactor-id" spellcheck="off" class="settings-control-input">
+      </div>
+
+      <div class="settings-control-group ">
+        <label for="notes" class="settings-control-label">Give it a name</label>
+        <input placeholder='"My iPhone" or "John Doe"' id="truefactor-name" spellcheck="off" class="settings-control-input">
+      </div>
+
+      <div class="add-new-app " onclick="pair();">
+        <button class="btn">
+          <img class="plus" src="img/icon_add_app.svg" alt="">
+          Add
+        </button>
+      </div>
+
+    </div>
+
+
+
+    <div class="notes-screen container h">
+      <div class="settings-control-group">
+        <label for="notes" class="settings-control-label">Notes</label>
+        <textarea onchange="Vault.notes = this.value;saveVault();" style="height:400px;" id="notes" spellcheck="off" class="settings-control-input"></textarea>
+      </div>
+    </div>
+
+
+    <div class="chat-screen container h">
+      <div class="settings-control-group">
+        <div>Chat started.</div>
+        <input id="chatinput" spellcheck="off" class="settings-control-input"></textarea>
+      </div>
+    </div>
+
+
+
+
+    <div class="settings-pane" ng-class="{active: settings}">
+      <div class="settings-list">
+        <div class="settings-control-group">
+          <a href="" class="btn">Add secondary device</a>
+        </div>
+        <div class="settings-control-group">
+          <!-- <a href=""> -->
+            <label for="letter-codes" class="btn">
+              Use 8 letter codes
+              <input class="checkbox-right" type="checkbox" id="letter-codes" value="N">
+            </label>
+          <!-- </a> -->
+        </div>
+        <div class="settings-control-group">
+          <a href="" class="btn">Change password</a>
+        </div>
+        <div class="settings-control-group">
+          <a href="login.html">
+            <button class="btn">Log out</button>
+          </a>
+        </div>
+      </div>
+      <div class="settings-switch" ng-click="toggleSettings()">
+        <a href="">
+          <img src="img/icon_drawer.svg" alt="">
+        </a>
+      </div>
+    </div>
+  <canvas id="canvas" class="h"></canvas>
+  </body>
 </html>
-

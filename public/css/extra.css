@@ -1,0 +1,48 @@
+
+.area{
+  margin:5px;
+  padding:5px;
+}
+.box {
+  float: left;
+  width: 200px;
+  height: 100px;
+  margin: 1em;
+}
+.after-box {
+  clear: left;
+}
+
+.h{
+  display:none;
+}
+
+/*
+.approve{
+  background-image:url(/btnapprove.png);
+  display:inline-block;
+  width:150px;
+  height:50px;
+}
+.deny{
+  background-image:url(/btndeny.png);
+  display:inline-block;
+  width:150px;
+  height:50px;
+}
+*/
+
+.request-form .input {
+    display: block;
+    height: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    padding: 0 15px;
+    background: none;
+    line-height: 55px;
+    border: 2px #fff solid;
+    font: 400 21px/24px Circe_light, Verdana, sans-serif;
+    color: #fff;
+}

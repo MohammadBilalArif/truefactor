@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>Truefactor – Apps</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  </head>
+  <body ng-app="truefactorApp" ng-controller="truefactorMainController">
+    <header class="index-header active">
+      <a href="">
+        <img class="open-settings" src="img/icon_drawer.svg" alt="" ng-click="toggleSettings()">
+      </a>
+      <div class="logo">
+        <img src="img/icon_truefactor.svg" alt="">
+      </div>
+      <div class="header-text">
+        <span>Truefactor</span>
+      </div>
+      <img class="add" src="img/icon_add_app.svg" alt="">
+    </header>
+    <div class="apps-list-screen container active">
+      <div class="index-search">
+        <input class="search-input" id="search" placeholder="Search in the apps.." type="text" value="" required>
+      </div>
+      <div class="apps-list">
+        <a href="./auth.html">
+          <div class="app">
+            <div class="app-icon">
+              <img src="img/logo_a.png" alt="">
+            </div>
+            <h2 class="app-name">Alphabet</h2>
+            <p class="app-description">Authentification center</p>
+          </div>
+        </a>
+        <a href="./auth.html">
+          <div class="app">
+            <div class="app-icon">
+              <img src="img/logo_b.png" alt="">
+            </div>
+            <h2 class="app-name">Bitcoin Trader</h2>
+            <p class="app-description">Don't worry, it's safe</p>
+          </div>
+        </a>
+        <a href="./auth.html">
+          <div class="app">
+            <div class="app-icon">
+              <img src="img/logo_d.png" alt="">
+            </div>
+            <h2 class="app-name">Deposit</h2>
+            <p class="app-description">Save money</p>
+          </div>
+        </a>
+        <a href="./auth.html">
+          <div class="app">
+            <div class="app-icon">
+              <img src="img/logo_s.png" alt="">
+            </div>
+            <h2 class="app-name">Secret Mailbox</h2>
+            <p class="app-description">Powered by Dropbox</p>
+          </div>
+        </a>
+        <a href="./auth.html">
+          <div class="app">
+            <div class="app-icon">
+              <img src="img/logo_w.png" alt="">
+            </div>
+            <h2 class="app-name">Wallet app</h2>
+            <p class="app-description">Bank of America</p>
+          </div>
+        </a>
+      </div>
+      <div class="add-new-app">
+        <button class="btn">
+          <img class="plus" src="img/icon_add_app.svg" alt="">
+          Add new app
+        </button>
+      </div>
+    </div>
+    <div class="settings-pane" ng-class="{active: settings}">
+      <div class="settings-list">
+        <div class="settings-control-group">
+          <a href="" class="btn">Add secondary device</a>
+        </div>
+        <div class="settings-control-group">
+          <!-- <a href=""> -->
+            <label for="letter-codes" class="btn">
+              Use 8 letter codes
+              <input class="checkbox-right" type="checkbox" id="letter-codes" value="N">
+            </label>
+          <!-- </a> -->
+        </div>
+        <div class="settings-control-group">
+          <a href="" class="btn">Change password</a>
+        </div>
+        <div class="settings-control-group">
+          <a href="login.html">
+            <button class="btn">Log out</button>
+          </a>
+        </div>
+      </div>
+      <div class="settings-switch" ng-click="toggleSettings()">
+        <a href="">
+          <img src="img/icon_drawer.svg" alt="">
+        </a>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
+    <script src="js/state-transitions.js"></script>
+  </body>
+</html>
